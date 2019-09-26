@@ -93,6 +93,7 @@ strip_unwanted_chars(token);
 for(int i=0; i<getArraySize();i++){
 	string stringA= token;
 	string stringB=myArray[i].word;
+
 	toUpper(stringA);
 	toUpper(stringB);
 
