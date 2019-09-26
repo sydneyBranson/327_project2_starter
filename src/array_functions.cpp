@@ -110,7 +110,7 @@ if(token.length()!=0){
 	nextWord+=1;
 }
 }
-//check why these wont work
+
 
 /*if you are debugging the file must be in the project parent directory
   in this case Project2 with the .project and .cProject files*/
