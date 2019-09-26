@@ -26,7 +26,7 @@ using namespace std;
 int nextWord=0;
 struct entry{
 	string word;
-	int num_occur;
+	int number_occurances;
 };
 
 entry myArray[MAX_WORDS];//check if this needs to be here now
@@ -49,7 +49,7 @@ std::string getArrayWordAt(int i){
 }
 
 int getArrayWord_NumbOccur_At(int i){
-	return myArray[i].num_occur;
+	return myArray[i].number_occurances;
 }
 
 /*loop through whole file, one line at a time
@@ -91,7 +91,7 @@ void processToken(std::string &token){
 		toUpper(stringB);
 
 		if(stringA==stringB){
-			myArray[i].num_occur+=1;
+			myArray[i].number_occurances+=1;
 			return;
 		}
 
@@ -99,7 +99,7 @@ void processToken(std::string &token){
 	if(token.length()!=0){
 		myArray[nextWord]=entry();
 		myArray[nextWord].word=token;
-		myArray[nextWord].num_occur=1;
+		myArray[nextWord].number_occurances=1;
 		nextWord+=1;
 	}
 	}
@@ -107,8 +107,7 @@ void processToken(std::string &token){
 
 /*if you are debugging the file must be in the project parent directory
   in this case Project2 with the .project and .cProject files*/
-bool openFile(std::fstream& myfile, const std::string& myFileName,
-		std::ios_base::openmode mode = std::ios_base::in){
+bool openFile(std::fstream& myfile, const std::string& myFileName, std::ios_base::openmode mode){
 	myfile.open(myFileName.c_str(), mode);
 		return  myfile.is_open();
 }
@@ -137,7 +136,7 @@ int writeArraytoFile(const std::string &outputfilename){
 		}
 		else
 		for(int i = 0;i<nextWord;i++){
-			out << myArray[i].word + " " + intToString(myArray[i].num_occur) + "\n";//might be the intToString, jsut be myArray...
+			out << myArray[i].word + " " + intToString(myArray[i].number_occurances) + "\n";//might be the intToString, jsut be myArray...
 
 		}
 		out.close();
@@ -150,8 +149,8 @@ int writeArraytoFile(const std::string &outputfilename){
  * The presence of the enum implies a switch statement based on its value
  */
 void sortArray(constants::sortOrder so){
- case constants::ASCENDING://this should work now
- 		//sort(myArray,(myArray+nextWordspot), CompareTo);
+
+switch(so){
  case constants::ASCENDING://this should work now
  		//sort(myArray,(myArray+nextWordspot), CompareTo);
 
@@ -179,6 +178,7 @@ void sortArray(constants::sortOrder so){
  		break;
  	case constants::NUMBER_OCCURRENCES:
  		break;
+	}
  }
 
 
